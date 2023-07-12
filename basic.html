@@ -1,190 +1,211 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Django Learning by Vatsal Patel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <style>
+    code {
+      color: #0d6efd !important;
+      /* display: block;
+  white-space: pre-wrap    */
+
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h1>Django Intro</h1>
-        <ul class="list-group mt-4">
-          <!-- Django Introduction -->
-          <li class="list-group-item">
-            <h4>What is Django?</h4>
-            <p>Django is an open-source web development framework based on Python.</p>
-          </li>
-          <!-- MVC Architecture -->
-          <li class="list-group-item">
-            <h4>MVC Architecture</h4>
-            <p>Django follows the Model-View-Controller (MVC) architectural pattern.</p>
-          </li>
-          <!-- Key Goals of Django -->
-          <li class="list-group-item">
-            <h4>Key Goals of Django</h4>
-            <ul>
-              <li>Simplicity</li>
-              <li>Flexibility</li>
-              <li>Reliability</li>
-              <li>Scalability</li>
-            </ul>
-          </li>
-          <!-- Built-in Admin Panel -->
-          <li class="list-group-item">
-            <h4>Built-in Admin Panel</h4>
-            <p>Django provides an easy-to-use admin panel for backend management.</p>
-          </li>
-          <!-- Rapid Development and Code Reuse -->
-          <li class="list-group-item">
-            <h4>Rapid Development and Code Reuse</h4>
-            <p>Django promotes rapid development and code reuse through the DRY (Don't Repeat Yourself) philosophy.</p>
-          </li>
-          <!-- Security Features -->
-          <li class="list-group-item">
-            <h4>Security Features</h4>
-            <p>Django prioritizes security and provides features to prevent common vulnerabilities such as clickjacking, cross-site scripting, and SQL injection.</p>
-          </li>
-          <!-- Cross-platform Compatibility -->
-          <li class="list-group-item">
-            <h4>Cross-platform Compatibility</h4>
-            <p>Django is cross-platform compatible, allowing development on different operating systems.</p>
-          </li>
-          <!-- Supportive Community -->
-          <li class="list-group-item">
-            <h4>Supportive Community</h4>
-            <p>Django has a large and supportive community, offering extensive documentation and resources for developers.</p>
-          </li>
-          <!-- Usage in Popular Companies -->
-          <li class="list-group-item">
-            <h4>Usage in Popular Companies</h4>
-            <p>Django is used by popular companies such as Instagram, Spotify, and Dropbox for its speed, flexibility, and ease of use.</p>
-          </li>
-          <!-- Handling Media Files and Heavy Traffic -->
-          <li class="list-group-item">
-            <h4>Handling Media Files and Heavy Traffic</h4>
-            <p>Django provides robust features to handle large volumes of media files and heavy traffic in web applications.</p>
-          </li>
-          <!-- Backend APIs for Mobile Applications -->
-          <li class="list-group-item">
-            <h4>Backend APIs for Mobile Applications</h4>
-            <p>Django can be used to develop backend APIs for mobile applications, enabling integration with web-based functionality.</p>
-          </li>
-          <!-- Regular Updates and Security Patches -->
-          <li class="list-group-item">
-            <h4>Regular Updates and Security Patches</h4>
-            <p>Django is constantly updated, providing regular security patches to address vulnerabilities.</p>
-          </li>
+  <div class="container mt-5">
+    <h1>Django Intro</h1>
+    <ul class="list-group mt-4">
+      <!-- Django Introduction -->
+      <li class="list-group-item">
+        <h4>What is Django?</h4>
+        <p>Django is an open-source web development framework based on Python.</p>
+      </li>
+      <!-- MVC Architecture -->
+      <li class="list-group-item">
+        <h4>MVC Architecture</h4>
+        <p>Django follows the Model-View-Controller (MVC) architectural pattern.</p>
+      </li>
+      <!-- Key Goals of Django -->
+      <li class="list-group-item">
+        <h4>Key Goals of Django</h4>
+        <ul>
+          <li>Simplicity</li>
+          <li>Flexibility</li>
+          <li>Reliability</li>
+          <li>Scalability</li>
         </ul>
-      </div>
+      </li>
+      <!-- Built-in Admin Panel -->
+      <li class="list-group-item">
+        <h4>Built-in Admin Panel</h4>
+        <p>Django provides an easy-to-use admin panel for backend management.</p>
+      </li>
+      <!-- Rapid Development and Code Reuse -->
+      <li class="list-group-item">
+        <h4>Rapid Development and Code Reuse</h4>
+        <p>Django promotes rapid development and code reuse through the DRY (Don't Repeat Yourself) philosophy.</p>
+      </li>
+      <!-- Security Features -->
+      <li class="list-group-item">
+        <h4>Security Features</h4>
+        <p>Django prioritizes security and provides features to prevent common vulnerabilities such as clickjacking,
+          cross-site scripting, and SQL injection.</p>
+      </li>
+      <!-- Cross-platform Compatibility -->
+      <li class="list-group-item">
+        <h4>Cross-platform Compatibility</h4>
+        <p>Django is cross-platform compatible, allowing development on different operating systems.</p>
+      </li>
+      <!-- Supportive Community -->
+      <li class="list-group-item">
+        <h4>Supportive Community</h4>
+        <p>Django has a large and supportive community, offering extensive documentation and resources for developers.
+        </p>
+      </li>
+      <!-- Usage in Popular Companies -->
+      <li class="list-group-item">
+        <h4>Usage in Popular Companies</h4>
+        <p>Django is used by popular companies such as Instagram, Spotify, and Dropbox for its speed, flexibility, and
+          ease of use.</p>
+      </li>
+      <!-- Handling Media Files and Heavy Traffic -->
+      <li class="list-group-item">
+        <h4>Handling Media Files and Heavy Traffic</h4>
+        <p>Django provides robust features to handle large volumes of media files and heavy traffic in web applications.
+        </p>
+      </li>
+      <!-- Backend APIs for Mobile Applications -->
+      <li class="list-group-item">
+        <h4>Backend APIs for Mobile Applications</h4>
+        <p>Django can be used to develop backend APIs for mobile applications, enabling integration with web-based
+          functionality.</p>
+      </li>
+      <!-- Regular Updates and Security Patches -->
+      <li class="list-group-item">
+        <h4>Regular Updates and Security Patches</h4>
+        <p>Django is constantly updated, providing regular security patches to address vulnerabilities.</p>
+      </li>
+    </ul>
+  </div>
 
-      <div class="container mt-5">
-        <h1>Django Virtual Environment Setup</h1>
-        <ul class="list-group mt-4">
-          <!-- Introduction to Virtual Environment -->
-          <li class="list-group-item">
-            <h4>Start with a Virtual Environment</h4>
-            <p>A virtual environment provides a personal space for your Django projects, isolating them from other files or projects on your computer.</p>
-          </li>
-          <!-- Installing virtualenv -->
-          <li class="list-group-item">
-            <h4>Installing virtualenv</h4>
-            <p>Install virtualenv using the following command:</p>
-            <pre><code>python -m pip install virtualenv</code></pre>
-          </li>
-          <!-- Creating a virtual environment -->
-          <li class="list-group-item">
-            <h4>Creating a Virtual Environment</h4>
-            <p>Create a virtual environment using the following command:</p>
-            <pre><code>virtualenv MyFirstApp</code></pre>
-          </li>
-          <!-- Activating the virtual environment -->
-          <li class="list-group-item">
-            <h4>Activating the Virtual Environment</h4>
-            <p>To activate the virtual environment, run the appropriate command based on your operating system:</p>
-            <pre><code>MyFirstApp\Scripts\activate  <span class="text-muted">(for Windows)</span><br>source MyFirstApp/bin/activate  <span class="text-muted">(for Linux/Mac)</span></code></pre>
-            <p>Note: You need to reactivate the virtual environment each time you open a new command prompt.</p>
-          </li>
-          <!-- Installing Django -->
-          <li class="list-group-item">
-            <h4>Installing Django</h4>
-            <p>Inside the activated virtual environment, install Django using the following command:</p>
-            <pre><code>pip install django</code></pre>
-          </li>
-          <!-- Creating a requirements.txt file -->
-          <li class="list-group-item">
-            <h4>Creating a Requirements.txt File</h4>
-            <p>To create a requirements.txt file for your Django project, use the following command:</p>
-            <pre><code>pip freeze > requirements.txt</code></pre>
-            <p>The requirements.txt file lists all the project dependencies.</p>
-          </li>
-          <!-- Starting a Django project -->
-          <li class="list-group-item">
-            <h4>Starting a Django Project</h4>
-            <p>To start a Django project, use the following command:</p>
-            <pre><code>django-admin startproject FirstDjangoApp .</code></pre>
-          </li>
-          <!-- Starting a Django app -->
-          <li class="list-group-item">
-            <h4>Starting a Django App</h4>
-            <p>To start a Django app, use the following command:</p>
-            <pre><code>python manage.py startapp mainApp</code></pre>
-          </li>
+  <div class="container mt-5">
+    <h1>Django Virtual Environment Setup</h1>
+    <ul class="list-group mt-4">
+      <!-- Introduction to Virtual Environment -->
+      <li class="list-group-item">
+        <h4>Start with a Virtual Environment</h4>
+        <p>A virtual environment provides a personal space for your Django projects, isolating them from other files or
+          projects on your computer.</p>
+      </li>
+      <!-- Installing virtualenv -->
+      <li class="list-group-item">
+        <h4>Installing virtualenv</h4>
+        <p>Install virtualenv using the following command:</p>
+        <pre><code>python -m pip install virtualenv</code></pre>
+      </li>
+      <!-- Creating a virtual environment -->
+      <li class="list-group-item">
+        <h4>Creating a Virtual Environment</h4>
+        <p>Create a virtual environment using the following command:</p>
+        <pre><code>virtualenv MyFirstApp</code></pre>
+      </li>
+      <!-- Activating the virtual environment -->
+      <li class="list-group-item">
+        <h4>Activating the Virtual Environment</h4>
+        <p>To activate the virtual environment, run the appropriate command based on your operating system:</p>
+        <pre><code>MyFirstApp\Scripts\activate  <span class="text-muted">(for Windows)</span><br>source MyFirstApp/bin/activate  <span class="text-muted">(for Linux/Mac)</span></code></pre>
+        <p>Note: You need to reactivate the virtual environment each time you open a new command prompt.</p>
+      </li>
+      <!-- Installing Django -->
+      <li class="list-group-item">
+        <h4>Installing Django</h4>
+        <p>Inside the activated virtual environment, install Django using the following command:</p>
+        <pre><code>pip install django</code></pre>
+      </li>
+      <!-- Creating a requirements.txt file -->
+      <li class="list-group-item">
+        <h4>Creating a Requirements.txt File</h4>
+        <p>To create a requirements.txt file for your Django project, use the following command:</p>
+        <pre><code>pip freeze > requirements.txt</code></pre>
+        <p>The requirements.txt file lists all the project dependencies.</p>
+      </li>
+      <!-- Starting a Django project -->
+      <li class="list-group-item">
+        <h4>Starting a Django Project</h4>
+        <p>To start a Django project, use the following command:</p>
+        <pre><code>django-admin startproject FirstDjangoApp .</code></pre>
+      </li>
+      <!-- Starting a Django app -->
+      <li class="list-group-item">
+        <h4>Starting a Django App</h4>
+        <p>To start a Django app, use the following command:</p>
+        <pre><code>python manage.py startapp mainApp</code></pre>
+      </li>
+    </ul>
+  </div>
+  <div class="container mt-5">
+    <h1>Django Project Structure and File Structure</h1>
+    <ul class="list-group mt-4">
+      <!-- Introduction to Django Project Structure -->
+      <li class="list-group-item">
+        <h4>Django Project Structure</h4>
+        <p>Django organizes web applications using a directory structure, consisting of a project folder and app
+          folders.</p>
+      </li>
+      <!-- Creating a Django project -->
+      <li class="list-group-item">
+        <h4>Creating a Django Project</h4>
+        <p>To create a Django project, use the following command:</p>
+        <pre><code>django-admin startproject MyProject</code></pre>
+        <p>Replace "MyProject" with the desired project name.</p>
+      </li>
+      <!-- Root Directory -->
+      <li class="list-group-item">
+        <h4>Root Directory</h4>
+        <p>When creating a Django project, the root directory is created with the project name. It contains necessary
+          files for basic functionality.</p>
+        <p>Important files in the root directory:</p>
+        <ul>
+          <li>manage.py: Command-line utility for project debugging, deployment, and running web applications.</li>
+          <li>settings.py: Main project configuration file with database settings, installed apps, and middleware.</li>
+          <li>urls.py: Contains URL mappings for the project.</li>
+          <li>wsgi.py: Used for hosting the application in production using WSGI servers.</li>
+          <li>asgi.py: Used for hosting the application in production using ASGI servers.</li>
         </ul>
-      </div>
-      <div class="container mt-5">
-        <h1>Django Project Structure and File Structure</h1>
-        <ul class="list-group mt-4">
-          <!-- Introduction to Django Project Structure -->
-          <li class="list-group-item">
-            <h4>Django Project Structure</h4>
-            <p>Django organizes web applications using a directory structure, consisting of a project folder and app folders.</p>
-          </li>
-          <!-- Creating a Django project -->
-          <li class="list-group-item">
-            <h4>Creating a Django Project</h4>
-            <p>To create a Django project, use the following command:</p>
-            <pre><code>django-admin startproject MyProject</code></pre>
-            <p>Replace "MyProject" with the desired project name.</p>
-          </li>
-          <!-- Root Directory -->
-          <li class="list-group-item">
-            <h4>Root Directory</h4>
-            <p>When creating a Django project, the root directory is created with the project name. It contains necessary files for basic functionality.</p>
-            <p>Important files in the root directory:</p>
-            <ul>
-              <li>manage.py: Command-line utility for project debugging, deployment, and running web applications.</li>
-              <li>settings.py: Main project configuration file with database settings, installed apps, and middleware.</li>
-              <li>urls.py: Contains URL mappings for the project.</li>
-              <li>wsgi.py: Used for hosting the application in production using WSGI servers.</li>
-              <li>asgi.py: Used for hosting the application in production using ASGI servers.</li>
-            </ul>
-            <p>To run the project, use the following command:</p>
-            <pre><code>python manage.py runserver</code></pre>
-            <p>This command starts the development server and boots up your application.</p>
-          </li>
-          <!-- App Directory -->
-          <li class="list-group-item">
-            <h4>App Directory</h4>
-            <p>A Django app is a reusable module that performs a specific functionality within a project. Examples of app functionality could be cart, product management, user authentication, etc.</p>
-            <p>To create a new app, use the following command:</p>
-            <pre><code>python manage.py startapp MyApp</code></pre>
-            <p>Replace "MyApp" with the desired app name.</p>
-            <p>Once created, you can link the app to your project by adding it to the <code>INSTALLED_APPS</code> list in the project's <code>settings.py</code> file.</p>
-          </li>
-        </ul>
-      </div>
+        <p>To run the project, use the following command:</p>
+        <pre><code>python manage.py runserver</code></pre>
+        <p>This command starts the development server and boots up your application.</p>
+      </li>
+      <!-- App Directory -->
+      <li class="list-group-item">
+        <h4>App Directory</h4>
+        <p>A Django app is a reusable module that performs a specific functionality within a project. Examples of app
+          functionality could be cart, product management, user authentication, etc.</p>
+        <p>To create a new app, use the following command:</p>
+        <pre><code>python manage.py startapp MyApp</code></pre>
+        <p>Replace "MyApp" with the desired app name.</p>
+        <p>Once created, you can link the app to your project by adding it to the <code>INSTALLED_APPS</code> list in
+          the project's <code>settings.py</code> file.</p>
+      </li>
+    </ul>
+  </div>
 
-      <div class="container mt-5">
-        <h1>Django Basic App Model - Makemigrations and Migrate</h1>
-        <ul class="list-group mt-4">
-          <!-- Creating an app and model -->
-          <li class="list-group-item">
-            <h4>Creating an App and Model</h4>
-            <p>To create a new app, run the following command:</p>
-            <pre><code>python manage.py startapp myapp</code></pre>
-            <p>Add "myapp" to the <code>INSTALLED_APPS</code> list in the project's <code>settings.py</code> file.</p>
-            <p>In the "myapp" app's <code>models.py</code> file, create a model by importing <code>Model</code> and the field types from <code>django.db.models</code>.</p>
-            <pre><code># Importing necessary modules
+  <div class="container mt-5">
+    <h1>Django Basic App Model - Makemigrations and Migrate</h1>
+    <ul class="list-group mt-4">
+      <!-- Creating an app and model -->
+      <li class="list-group-item">
+        <h4>Creating an App and Model</h4>
+        <p>To create a new app, run the following command:</p>
+        <pre><code>python manage.py startapp myapp</code></pre>
+        <p>Add "myapp" to the <code>INSTALLED_APPS</code> list in the project's <code>settings.py</code> file.</p>
+        <p>In the "myapp" app's <code>models.py</code> file, create a model by importing <code>Model</code> and the
+          field types from <code>django.db.models</code>.</p>
+        <pre><code># Importing necessary modules
     from django.db import models
     
     # Create your models here.
@@ -193,114 +214,330 @@
         age = models.IntegerField()
         email = models.EmailField()
     </code></pre>
-            <p>In the above example, a model named <code>Student</code> is created with three fields:</p>
-            <ul>
-              <li><code>name</code>: A <code>CharField</code> represents a string field that can store character data. The <code>max_length</code> parameter specifies the maximum number of characters allowed for the name.</li>
-              <li><code>age</code>: An <code>IntegerField</code> represents an integer field that can store whole numbers.</li>
-              <li><code>email</code>: An <code>EmailField</code> represents an email address field.</li>
-            </ul>
-            <p>You can choose different field types based on your data requirements. Django provides various field types like <code>CharField</code>, <code>IntegerField</code>, <code>BooleanField</code>, <code>DateField</code>, and many more.</p>
+        <p>In the above example, a model named <code>Student</code> is created with three fields:</p>
+        <ul>
+          <li><code>name</code>: A <code>CharField</code> represents a string field that can store character data. The
+            <code>max_length</code> parameter specifies the maximum number of characters allowed for the name.</li>
+          <li><code>age</code>: An <code>IntegerField</code> represents an integer field that can store whole numbers.
           </li>
-          <!-- Makemigrations -->
-          <li class="list-group-item">
-            <h4>Makemigrations</h4>
-            <p>The <code>makemigrations</code> command generates migration files that contain the necessary SQL commands for creating the tables based on the models defined in your app.</p>
-            <p>To generate the migration files, run the following command:</p>
-            <pre><code>python manage.py makemigrations myapp</code></pre>
-            <p>This command will create migration files in the "myapp/migrations" directory. The migration files include the details of the model changes.</p>
-          </li>
-          <!-- Migrate -->
-          <li class="list-group-item">
-            <h4>Migrate</h4>
-            <p>The <code>migrate</code> command applies the migration files to the database, creating the necessary tables and columns.</p>
-            <p>To apply the migrations, run the following command:</p>
-            <pre><code>python manage.py migrate</code></pre>
-            <p>This command will execute the SQL commands defined in the migration files and create the corresponding tables in the database.</p>
-          </li>
+          <li><code>email</code>: An <code>EmailField</code> represents an email address field.</li>
         </ul>
-      </div>
-      <div class="container mt-5">
-        <h1>Django Templates Engine</h1>
-        <ul class="list-group mt-4">
-         
-          <!-- Introduction -->
-          <li class="list-group-item">
-            <h4>Introduction</h4>
-            <p>A Django template is a text file containing HTML, CSS, and JavaScript code that defines the structure and layout of a web page. The Django framework uses templates to generate dynamic HTML content and provide a clean separation between the backend logic and frontend presentation.</p>
-            <p>Django follows the Model-View-Template (MVT) architectural pattern, where templates are responsible for rendering the data provided by views. The Django template language (DTL) is used within templates to access and manipulate data.</p>
-          </li>
-          <!-- Django Templates -->
-          <li class="list-group-item">
-            <h4>Django Templates</h4>
-            <p>Django templates allow developers to create flexible and reusable HTML templates for their web applications. Templates can contain static HTML content as well as dynamic elements that are populated with data from the backend.</p>
-            <p>The key features of Django templates include:</p>
-            <ul>
-              <li>Separation of logic and design</li>
-              <li>Template inheritance for code reuse</li>
-              <li>Template tags for adding logic and control flow</li>
-              <li>Template filters for transforming data</li>
-              <li>Comments for documentation and notes</li>
-            </ul>
-          </li>
-          <!-- Why Django Template? -->
-          <li class="list-group-item">
-            <h4>Why Django Template?</h4>
-            <p>Django templates follow the DRY (Don't Repeat Yourself) principle and help maintain a clean and modular codebase. They allow frontend developers to focus on the presentation layer without worrying about backend implementation details.</p>
-          </li>
-          <!-- Configuration -->
-          <li class="list-group-item">
-            <h4>Configuration</h4>
-            <p>To configure the Django template system, follow these steps:</p>
-            <ol>
-              <li>Create a directory named "templates" inside your project directory.</li>
-              <li>Update the "TEMPLATES" setting in the project's settings.py file to include the path to the templates directory.</li>
-              <li>Create your HTML template files within the templates directory.</li>
-            </ol>
-          </li>
-          <!-- Django Template Language (DTL) -->
-          <li class="list-group-item">
-            <h4>Django Template Language (DTL)</h4>
-            <p>The Django template language (DTL) is a powerful and expressive language used within Django templates to access and manipulate data. DTL provides various constructs, including variables, tags, and filters, to work with data in templates.</p>
-          </li>
-          <!-- Variables -->
-          <li class="list-group-item">
-            <h4>Variables</h4>
-            <p>In DTL, variables are used to display dynamic content within templates. They are enclosed within double curly braces.</p>
-            <pre><code>{{ variable_name }}</code></pre>
-          </li>
-          <!-- Tags -->
-          <li class="list-group-item">
-            <h4>Tags</h4>
-            <p>Tags are used to perform control flow, loop over data, and execute logic within templates. They are enclosed within percent signs.</p>
-            <pre><code>{% tag_name %}</code></pre>
-          </li>
-          <!-- Filters -->
-          <li class="list-group-item">
-            <h4>Filters</h4>
-            <p>Filters are used to modify the values of variables or arguments passed to template tags. They are applied using the pipe symbol.</p>
-            <pre><code>{{ variable_name | filter_name }}</code></pre>
-          </li>
-          <!-- Comments -->
-          <li class="list-group-item">
-            <h4>Comments</h4>
-            <p>Comments are used to add documentation or notes within templates. They are enclosed within template comment tags.</p>
-            <pre><code>{# comment_here #}</code></pre>
-          </li>
-          <!-- Template Inheritance -->
-          <li class="list-group-item">
-            <h4>Template Inheritance</h4>
-            <p>Template inheritance allows you to create a base template that defines the common structure and layout of your site, and then extend it in child templates to add specific content or override sections of the base template.</p>
-            <pre><code>{% extends 'base.html' %}</code></pre>
-          </li>
+        <p>You can choose different field types based on your data requirements. Django provides various field types
+          like <code>CharField</code>, <code>IntegerField</code>, <code>BooleanField</code>, <code>DateField</code>, and
+          many more.</p>
+      </li>
+      <!-- Makemigrations -->
+      <li class="list-group-item">
+        <h4>Makemigrations</h4>
+        <p>The <code>makemigrations</code> command generates migration files that contain the necessary SQL commands for
+          creating the tables based on the models defined in your app.</p>
+        <p>To generate the migration files, run the following command:</p>
+        <pre><code>python manage.py makemigrations myapp</code></pre>
+        <p>This command will create migration files in the "myapp/migrations" directory. The migration files include the
+          details of the model changes.</p>
+      </li>
+      <!-- Migrate -->
+      <li class="list-group-item">
+        <h4>Migrate</h4>
+        <p>The <code>migrate</code> command applies the migration files to the database, creating the necessary tables
+          and columns.</p>
+        <p>To apply the migrations, run the following command:</p>
+        <pre><code>python manage.py migrate</code></pre>
+        <p>This command will execute the SQL commands defined in the migration files and create the corresponding tables
+          in the database.</p>
+      </li>
+    </ul>
+  </div>
+  <div class="container mt-5">
+    <h1>Django Templates Engine</h1>
+    <ul class="list-group mt-4">
+
+      <!-- Introduction -->
+      <li class="list-group-item">
+        <h4>Introduction</h4>
+        <p>A Django template is a text file containing HTML, CSS, and JavaScript code that defines the structure and
+          layout of a web page. The Django framework uses templates to generate dynamic HTML content and provide a clean
+          separation between the backend logic and frontend presentation.</p>
+        <p>Django follows the Model-View-Template (MVT) architectural pattern, where templates are responsible for
+          rendering the data provided by views. The Django template language (DTL) is used within templates to access
+          and manipulate data.</p>
+      </li>
+      <!-- Django Templates -->
+      <li class="list-group-item">
+        <h4>Django Templates</h4>
+        <p>Django templates allow developers to create flexible and reusable HTML templates for their web applications.
+          Templates can contain static HTML content as well as dynamic elements that are populated with data from the
+          backend.</p>
+        <p>The key features of Django templates include:</p>
+        <ul>
+          <li>Separation of logic and design</li>
+          <li>Template inheritance for code reuse</li>
+          <li>Template tags for adding logic and control flow</li>
+          <li>Template filters for transforming data</li>
+          <li>Comments for documentation and notes</li>
+        </ul>
+      </li>
+      <!-- Why Django Template? -->
+      <li class="list-group-item">
+        <h4>Why Django Template?</h4>
+        <p>Django templates follow the DRY (Don't Repeat Yourself) principle and help maintain a clean and modular
+          codebase. They allow frontend developers to focus on the presentation layer without worrying about backend
+          implementation details.</p>
+      </li>
+      <!-- Configuration -->
+      <li class="list-group-item">
+        <h4>Configuration</h4>
+        <p>To configure the Django template system, follow these steps:</p>
+        <ol>
+          <li>Create a directory named "templates" inside your project directory.</li>
+          <li>Update the "TEMPLATES" setting in the project's settings.py file to include the path to the templates
+            directory.</li>
+          <li>Create your HTML template files within the templates directory.</li>
+        </ol>
+      </li>
+      <!-- Django Template Language (DTL) -->
+      <li class="list-group-item">
+        <h4>Django Template Language (DTL)</h4>
+        <p>The Django template language (DTL) is a powerful and expressive language used within Django templates to
+          access and manipulate data. DTL provides various constructs, including variables, tags, and filters, to work
+          with data in templates.</p>
+      </li>
+      <!-- Variables -->
+      <li class="list-group-item">
+        <h4>Variables</h4>
+        <p>In DTL, variables are used to display dynamic content within templates. They are enclosed within double curly
+          braces.</p>
+        <pre><code>{{ variable_name }}</code></pre>
+      </li>
+      <!-- Tags -->
+      <li class="list-group-item">
+        <h4>Tags</h4>
+        <p>Tags are used to perform control flow, loop over data, and execute logic within templates. They are enclosed
+          within percent signs.</p>
+        <pre><code>{% tag_name %}</code></pre>
+      </li>
+      <!-- Filters -->
+      <li class="list-group-item">
+        <h4>Filters</h4>
+        <p>Filters are used to modify the values of variables or arguments passed to template tags. They are applied
+          using the pipe symbol.</p>
+        <pre><code>{{ variable_name | filter_name }}</code></pre>
+      </li>
+      <!-- Comments -->
+      <li class="list-group-item">
+        <h4>Comments</h4>
+        <p>Comments are used to add documentation or notes within templates. They are enclosed within template comment
+          tags.</p>
+        <pre><code>{# comment_here #}</code></pre>
+      </li>
+      <!-- Template Inheritance -->
+      <li class="list-group-item">
+        <h4>Template Inheritance</h4>
+        <p>Template inheritance allows you to create a base template that defines the common structure and layout of
+          your site, and then extend it in child templates to add specific content or override sections of the base
+          template.</p>
+        <pre><code>{% extends 'base.html' %}</code></pre>
+      </li>
+
+    </ul>
+  </div>
+  <div class="container mt-5">
+    <h1>Django Admin</h1>
+    <ul class="list-group mt-4">
+      <li class="list-group-item"> <h4>a CRUD* user interface of all your models! </h4></li>
+      <li class="list-group-item"> <h4>Getting Started : 127.0.0.1:8000/admin/</h4> </li>
+   
+      <li class="list-group-item">The reason why this URL works? In the urls.py file of your project:</li>
+    <li class="list-group-item"><pre> <code>
+        from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('', include('members.urls')),
+    path('admin/', admin.site.urls),
+]
+      </code></pre>
+    </li>
+    
+
+        <li class="list-group-item"> <h4>Create User</h4></li>
+        <li class="list-group-item">To be able to log into the admin application, we need to create a user</li>
+        <li class="list-group-item"><code>py manage.py createsuperuser</code></li>
+        <li class="list-group-item">Note : Password will not be seen during typing in cmd!</li>
+  
+        <li class="list-group-item"> <h4>Members model is missing</h4></li>
+        <li class="list-group-item">We can create, read, update, and delete groups and users</li>
+        <li class="list-group-item">we have to tell Django which models that should be visible in the admin interface</li>
+        <li class="list-group-item">project/app/admin.py:</li>
+        <li class="list-group-item"><pre><code>from django.contrib import admin
+          from .models import Member
           
+          # Register your models here.
+          admin.site.register(Member)</code></pre></li>
+  
+        <li class="list-group-item"> <h4>Django Admin - Set Fields to Display</h4></li>
+        <li class="list-group-item">Make the List Display More Reader-Friendly</li>
+        <li class="list-group-item">Change the <b>string representation function,</b> __str__() of the Member Model</li>
+        <li class="list-group-item">project/app/models.py</li>
+        <li class="list-group-item"><pre><code>class Product(models.Model):
+          name = models.CharField(max_length=100)
+          price = models.DecimalField(max_digits=8, decimal_places=2)
+          description = models.TextField()
+          image = models.ImageField(upload_to='product_images/')
+          # Add any other fields you need for your product model
+      
+          def __str__(self):
+              return f"{self.name} -> {self.price}"
+</code></pre></li>
+
+<li class="list-group-item"><h4>Before : Set Fields to Display</h4>
+  <img src="./assets/admin_product-before.png" width="400" /></li>
+  <li class="list-group-item"><h4>After : Set Fields to Display</h4>
+    <img src="./assets/admin_product-after.png" width="400"/></li>
+    
+    <li class="list-group-item"><h4>Set list_display</h4></li>
+    <li class="list-group-item">project/app/admin.py:
+<pre>
+  <code>
+    from django.contrib import admin
+    from .models import Product
+    class ProductAdmin(admin.ModelAdmin):
+      list_display = ("name", "price")
+      
+    admin.site.register(Product, ProductAdmin)
+  </code>
+</pre>
+
+    </li>
+    <li class="list-group-item"><h4>After : Set list_display</h4>
+      <img src="./assets/admin_product-after1.png" width="400"/></li>
         </ul>
+  </div>
+  <div class="container mt-5">
+    <h1>Django authentication system</h1>
+    <ul class="list-group mt-4">
+      <li class="list-group-item">Django provides an authentication and authorization ("permission") system, built on top of the session framework </li>
+      <li class="list-group-item">The framework includes built-in models for Users and Groups </li>
+    <li class="list-group-item"><h4>abstract class</h4>
+      <li class="list-group-item">In Django authentication, the abstract class AbstractBaseUser provides the core implementation for a user model. It defines the basic fields and methods required for user authentication. You can create a custom user model by subclassing AbstractBaseUser and adding additional fields specific to your application.</li>
+      <li class="list-group-item"><pre><code>from django.contrib.auth.models import AbstractBaseUser
+
+      class CustomUser(AbstractBaseUser):
+          # Add your custom fields here
+      
+          USERNAME_FIELD = 'username'
+          # Add additional fields, methods, etc.
+      </code></pre>
+    </li>
+    
+    <li class="list-group-item">In the code above, CustomUser is a subclass of AbstractBaseUser. By overriding and adding fields specific to your application, you can create a custom user model.</li>
+    <li class="list-group-item"><h4>Base class</h4></li>
+    <li class="list-group-item"><pre><code>from django.contrib.auth import get_user_model
+      from django.db import models
+      
+      User = get_user_model()
+      
+      class Post(models.Model):
+          author = models.ForeignKey(User, on_delete=models.CASCADE)
+          # Rest of the fields and methods for the Post model
+      </code></pre></li>
+      <li class="list-group-item">In the above code snippet, User obtained from get_user_model() is used as the base class for the author field in the Post model. This establishes a relationship between the Post model and the user model, allowing each post to be associated with a specific user.</li>
+      <li class="list-group-item"><h4>User objects</h4></li>
+      <li class="list-group-item"><b>User objects are the core of the authentication system.</b> </li>
+      <li class="list-group-item"><h4>Creating users</h4></li>
+      <li class="list-group-item">
+        <pre><code>>>> from django.contrib.auth.models import User
+          >>> user = User.objects.create_user("john", "lennon@thebeatles.com", "johnpassword")
+          
+          # At this point, user is a User object that has already been saved
+          # to the database. You can continue to change its attributes
+          # if you want to change other fields.
+          >>> user.last_name = "Lennon"
+          >>> user.save()</code></pre>
+      </li>
+      <li class="list-group-item"><h4>User Registration View</h4></li>
+      <li class="list-group-item"><pre><code>from django.shortcuts import render, redirect
+        from django.contrib.auth import authenticate, login
+        from django.http import HttpResponse
+        
+        def create_user_view(request):
+            if request.method == 'POST':
+                username = request.POST['username']
+                email = request.POST['email']
+                password = request.POST['password']
+                last_name = request.POST['last_name']
+        
+                try:
+                    user = User.objects.get(username=username)
+                    user.email = email
+                    user.set_password(password)
+                    user.last_name = last_name
+                    user.save()
+                    return redirect('success')
+                except User.DoesNotExist:
+                    user = User.objects.create_user(username, email, password)
+                    user.last_name = last_name
+                    user.save()
+                    return redirect('success')
+            else:
+                return render(request, 'create_user.html')</code></pre></li>
+
+                <li class="list-group-item"><h4>Authenticating users</h4></li>
+                <li class="list-group-item"><pre><code>from django.contrib.auth import authenticate
+
+                  user = authenticate(username="john", password="secret")
+                  if user is not None:
+                      # A backend authenticated the credentials
+                      ...
+                  else:
+                      # No backend authenticated the credentials
+                      ...</code></pre></li>
+                      <li class="list-group-item">More Method : <a href="https://docs.djangoproject.com/en/4.2/topics/auth/default/"> https://docs.djangoproject.com/en/4.2/topics/auth/default/</a></li>
+
+    </ul>
+  </div>
+  <div class="container mt-5">
+    <h1>Django Signals</h1>
+    <ul class="list-group mt-4">
+      <li class="list-group-item"><b>We can think of Django Signals as triggers.</b> Django Signals are useful when we need to invoke a piece of code at certain events. </li>
+      
+      <li class="list-group-item"> <h4>Signal Types</h4></li>
+     
+          <li class="list-group-item">
+              <strong>Pre-Save:</strong> Sent just before a model's <code>save()</code> method is called.
+          </li>
+          <li class="list-group-item">
+              <strong>Post-Save:</strong> Sent just after a model's <code>save()</code> method is successfully completed.
+          </li>
+          <li class="list-group-item">
+              <strong>Pre-Delete:</strong> Sent just before a model's <code>delete()</code> method is called.
+          </li>
+          <li class="list-group-item">
+              <strong>Post-Delete:</strong> Sent just after a model's <code>delete()</code> method is successfully completed.
+          </li>
+          <li class="list-group-item"> <h4>When to use Django Signals?</h4></li>
+          <li class="list-group-item"> To run a specific code before or after the event on the model/database.<br> For example when you update user then it should also update the profile model instance using the django post_save method.</li>
+          <li class="list-group-item"> <h4>Simple Django Signal Example</h4></li>
+          <li class="list-group-item"> <pre><code># models.py
+
+            from django.db import models
+            from django.db.models import signals
+            from django.dispatch import receiver  
+            
+            class Product(models.Model):
+                name = models.CharField(max_length=16)
+                description = models.CharField(max_length=32, blank=True)  
+            
+            @receiver(signals.post_save, sender=Product) 
+            def create_product(sender, instance, created, **kwargs):
+                print("Save method is called")</code></pre></li>
+    </ul>
       </div>
-
-
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
   <script src="./assets/jquery-3.6.0.min.js"></script>
   <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
