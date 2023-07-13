@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Django Learning by Vatsal Patel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <style>
+    code {
+      color: #0d6efd !important;
+      /* display: block;
+  white-space: pre-wrap    */
+
+    }
+  </style>
+</head>
+
+  <div class="container">
+    <h1 class="mt-5">Getting Started with Django Websocket and Channels</h1>
+
+  </div>
+  <div class="container">
+    <h2>HTTP vs WebSocket Comparison</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Aspect</th>
+          <th>HTTP</th>
+          <th>WebSocket</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Communication Model</td>
+          <td>Request-Response</td>
+          <td>Full-Duplex</td>
+          <td>
+            HTTP follows a request-response model where the client sends a request to the server, and the server responds with the requested data. It is suitable for scenarios where clients retrieve data intermittently.<br><br>
+            WebSockets allow for full-duplex communication, enabling both the client and server to send data to each other at any time. It is ideal for real-time, interactive applications that require ongoing communication.
+          </td>
+        </tr>
+        <tr>
+          <td>Connection</td>
+          <td>Stateless (Closed after each request)</td>
+          <td>Persistent</td>
+          <td>
+            HTTP is a stateless protocol, which means that each request is independent, and the connection is closed after each response. Subsequent requests require establishing new connections.<br><br>
+            WebSockets maintain a persistent connection between the client and the server, allowing for ongoing communication without the need to establish new connections for each message.
+          </td>
+        </tr>
+        <tr>
+          <td>Overhead</td>
+          <td>Higher (due to headers and connection establishment)</td>
+          <td>Lower</td>
+          <td>
+            HTTP requests carry more overhead due to the headers included with each request and the need to establish a new connection for each request. This can be resource-intensive, especially for frequent requests.<br><br>
+            WebSockets have lower overhead since the connection is kept open after the initial handshake. Subsequent messages do not require the same level of negotiation, resulting in more efficient communication.
+          </td>
+        </tr>
+        <tr>
+          <td>Real-time Communication</td>
+          <td>Possible with techniques like polling or long-polling</td>
+          <td>Efficient and real-time</td>
+          <td>
+            HTTP can be used for real-time communication using techniques like polling or long-polling, where the client repeatedly sends requests to check for updates from the server. However, these techniques can be inefficient and introduce latency.<br><br>
+            WebSockets provide efficient and real-time communication. They allow instant data updates from the server to the client without the need for continuous polling, resulting in faster and more responsive applications.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+    <h2>Asynchronous vs Synchronous Comparison</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Aspect</th>
+          <th>Asynchronous</th>
+          <th>Synchronous</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Communication Model</td>
+          <td>Independent and Non-blocking</td>
+          <td>Sequential and Blocking</td>
+          <td>
+            Asynchronous communication allows for independent and non-blocking operations. Multiple tasks can be initiated and executed simultaneously, without waiting for each task to complete.<br><br>
+            Synchronous communication follows a sequential and blocking model. Each task must be completed before proceeding to the next task, causing potential delays if one task takes longer.
+          </td>
+        </tr>
+        <tr>
+          <td>Response Handling</td>
+          <td>Callback, Promises, or Async/Await</td>
+          <td>Blocking until Response</td>
+          <td>
+            Asynchronous communication typically involves using callbacks, promises, or async/await mechanisms to handle responses. Once the response is received, a callback function or a promise handler is triggered to process the result.<br><br>
+            Synchronous communication blocks the execution until a response is received. The code waits for the response and can't continue with other tasks until the response is received or a timeout occurs.
+          </td>
+        </tr>
+        <tr>
+          <td>Error Handling</td>
+          <td>Error Callback or Promise Rejection</td>
+          <td>Exception Thrown</td>
+          <td>
+            Asynchronous communication often employs error callbacks or promise rejection mechanisms to handle errors. When an error occurs, an error callback is invoked, or the promise is rejected with an error object.<br><br>
+            Synchronous communication throws an exception when an error occurs. The exception needs to be caught and handled appropriately to prevent program termination.
+          </td>
+        </tr>
+        <tr>
+          <td>Concurrency</td>
+          <td>Supports Concurrent Operations</td>
+          <td>Single Task at a Time</td>
+          <td>
+            Asynchronous communication allows for concurrent operations, enabling multiple tasks to be executed simultaneously. It is suitable for scenarios where parallel processing or efficient resource utilization is required.<br><br>
+            Synchronous communication performs a single task at a time, executing one operation before moving on to the next. This can limit performance and responsiveness in situations where parallelism is beneficial.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+    <h2>Communication Model in Different Programming Languages</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Programming Language</th>
+          <th>Communication Model</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JavaScript</td>
+          <td>Asynchronous</td>
+          <td>
+            JavaScript supports asynchronous communication through various mechanisms like callbacks, promises, and async/await. It enables non-blocking operations, allowing concurrent execution of multiple tasks and handling of responses in an asynchronous manner.
+          </td>
+        </tr>
+        <tr>
+          <td>Django (Python)</td>
+          <td>Synchronous</td>
+          <td>
+            Django, which is a web framework based on Python, primarily follows a synchronous communication model. It typically uses synchronous request-response mechanisms where the server waits for the completion of each request before moving on to the next.
+          </td>
+        </tr>
+        <tr>
+          <td>Python</td>
+          <td>Synchronous</td>
+          <td>
+            Python, as a general-purpose programming language, predominantly follows a synchronous communication model. It executes code sequentially, waiting for each operation to complete before moving on to the next. However, Python also provides support for asynchronous programming through libraries like asyncio.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+  
+
+    <h2 class="mt-4">Django Synchronous Behavior</h2>
+    <p>Django itself is synchronous, meaning that each HTTP request is handled completely synchronously. This means that the server waits for each request to be processed before moving on to the next one.</p>
+
+    <h2 class="mt-4">Asynchronous Extensions: Django Channels</h2>
+    <p>In Django, you have extensions like Django Channels, which provide asynchronous functionality for handling websockets and other asynchronous tasks. These extensions allow you to handle multiple requests concurrently, improving the performance of your Django application.</p>
+
+    <h2 class="mt-4">WSGI_APPLICATION Setting</h2>
+    <p>The <code>WSGI_APPLICATION</code> setting in Django is used to specify the application object that the WSGI server should use to handle incoming requests. WSGI stands for Web Server Gateway Interface, which is a standard interface between web servers and web applications for Python.</p>
+    <p>The default value for <code>WSGI_APPLICATION</code> is usually '<em>project_name.wsgi.application</em>', where '<em>project_name</em>' represents the name of your Django project. This setting tells the server which Django application to use when handling requests.</p>
+
+    <h3>Example:</h3>
+    <pre><code>WSGI_APPLICATION = 'learn_channel.wsgi.application'</code></pre>
+
+    <h2 class="mt-4">Installation</h2>
+    <p>To get started with Django Websocket and Channels, follow these steps:</p>
+
+    <h3>Step 1: Activate Virtual Environment</h3>
+    <p>Before installing any packages, it's recommended to activate a virtual environment. A virtual environment allows you to isolate the dependencies of your project.</p>
+    <pre><code>$ source venv/bin/activate  # Linux/Mac
+$ venv\Scripts\activate  # Windows</code></pre>
+
+    <h3>Step 2: Install Django</h3>
+    <p>You can install Django using the pip package manager. Pip is the default package manager for Python.</p>
+    <pre><code>(venv) $ pip install django</code></pre>
+
+    <h3>Step 3: Install Channels</h3>
+    <p>Channels is an extension for Django that provides support for handling real-time communication and WebSockets in your Django project. It requires additional installation along with an ASGI application server.</p>
+    <pre><code>(venv) $ python -m pip install -U channels["daphne"]</code></pre>
+    <p>This command installs Channels together with the Daphne ASGI (Asynchronous Server Gateway Interface) application server. If you prefer a different application server, you can omit the <code>["daphne"]</code> part and install only Channels.</p>
+
+    <h2 class="mt-4">Project Setup</h2>
+    <p>Let's start by creating a Django project called "learn_channel" and an app called "counter" within the project.</p>
+    <h3>Create Django Project</h3>
+    <p>Open your terminal and navigate to the desired directory where you want to create the project.</p>
+    <pre><code>$ django-admin startproject learn_channel</code></pre>
+
+    <h3>Create App</h3>
+    <p>Navigate into the project directory:</p>
+    <pre><code>$ cd learn_channel</code></pre>
+    <p>Then create the "counter" app:</p>
+    <pre><code>$ python manage.py startapp counter</code></pre>
+
+
+
+    <h2 class="mt-4">Django Settings</h2>
+    <p>In your Django project's <code>settings.py</code> file, you need to make some changes to configure Channels and other necessary settings.</p>
+
+    <h3>settings.py</h3>
+    <p>In the <code>settings.py</code> file, add the following lines:</p>
+    <pre><code>WSGI_APPLICATION = 'learn_channel.wsgi.application'
+ASGI_APPLICATION = 'learn_channel.asgi.application'
+
+INSTALLED_APPS = [
+'daphne',  # Add daphne to the installed apps.
+'counter',  # This is the app we created earlier.
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+]</code></pre>
+    <p>These lines define the WSGI and ASGI applications to be used by your Django project. They also include the necessary apps, including 'channels' for WebSocket support and 'counter' as an example app.</p>
+
+    <h2 class="mt-4">ASGI Configuration</h2>
+    <p>The <code>asgi.py</code> file in your Django project's directory is responsible for the ASGI configuration. It tells the server how to handle different types of requests, such as HTTP and WebSockets.</p>
+
+    <h3>asgi.py</h3>
+    <p>In the <code>asgi.py</code> file, update the code as follows:</p>
+    <pre><code>import os
+from django.core.asgi import get_asgi_application
+from channels.routing import ProtocolTypeRouter
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'learn_channel.settings')
+application = ProtocolTypeRouter({
+'http': get_asgi_application(),
+'websocket': AuthMiddlewareStack(
+    URLRouter(
+        counter.routing.websocket_urlpatterns
+    )
+),
+})</code></pre>
+    <p>This configuration includes the <code>websocket</code> protocol and applies the <code>AuthMiddlewareStack</code> and <code>URLRouter</code> to handle the websocket connections using the defined URL patterns from the <code>counter</code> app's <code>routing.py</code> file.</p>
+
+    <h2 class="mt-4">Testing Websocket Channel</h2>
+    <p>To check if the websocket channel is working, you can run the Django development server with the following command:</p>
+    <pre><code>(venv) $ python manage.py runserver</code></pre>
+    <p>If you see the message "Starting ASGI/Daphne version 4.0.0 development server at http://127.0.0.1:8000/", it means the websocket channel is working properly.</p>
+
+    <h2 class="mt-4">Updating Files</h2>
+    <p>To implement the websocket functionality in your Django project, you need to make changes to three files.</p>
+
+    <h3>1. consumers.py</h3>
+    <p>This file defines a consumer class that handles the websocket connections and sends data to the clients.</p>
+    <pre><code>import json
+from time import sleep
+from channels.generic.websocket import WebsocketConsumer
+
+class WSConsumer(WebsocketConsumer):
+def connect(self):
+    self.accept()
+
+    count = 0
+    for i in range(1000):
+        if count &lt; 10:
+            count += 1
+            self.send(json.dumps({"message": count}))
+            sleep(1)
+        else:
+            count = 1
+            self.send(json.dumps({"message": count}))
+            sleep(1)</code></pre>
+
+    <h3>2. routing.py</h3>
+    <p>This file defines the URL routing for the websocket connections.</p>
+    <pre><code>from django.urls import path
+from .consumers import WSConsumer
+
+websocket_urlpatterns = [
+path("ws/counter/", WSConsumer.as_asgi()),
+]</code></pre>
+
+    <h3>3. index.html</h3>
+    <p>This file contains the HTML template for the client-side of the websocket connection. It displays the received data.</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 id="number"&gt;{{count}}&lt;/h1&gt;
+&lt;script&gt;
+const socket = new WebSocket('ws://localhost:8000/ws/counter/');
+socket.onmessage = (e) =&gt; {
+    let numbers = JSON.parse(e.data).message;
+    number.innerHTML = numbers;
+    console.log(e.data);
+};
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2 class="mt-4">URL Pattern and View</h2>
+    <p>To test the websocket functionality, you need to define a URL pattern and a view in the <code>counter</code> app.</p>
+
+    <h3>1. Update counter/views.py</h3>
+    <p>In the <code>views.py</code> file within the <code>counter</code> app, add the following code:</p>
+    <pre><code>from django.shortcuts import render
+
+def index(request):
+return render(request, 'index.html')</code></pre>
+
+    <h3>2. Update counter/urls.py</h3>
+    <p>Create a new file called <code>urls.py</code> in the <code>counter</code> app directory (if it doesn't exist already) and add the following code:</p>
+    <pre><code>from django.urls import path
+from . import views
+
+urlpatterns = [
+path('', views.index, name='index'),
+]</code></pre>
+
+    <h3>3. Update learn_channel/urls.py</h3>
+    <p>In the <code>urls.py</code> file within the <code>learn_channel</code> project, add the following code:</p>
+    <pre><code>from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+path('admin/', admin.site.urls),
+path('', include('counter.urls')),
+]</code></pre>
+
+    <h2 class="mt-4">Testing</h2>
+    <p>Now you can run the Django development server and test the websocket functionality in your browser.</p>
+    <pre><code>(venv) $ python manage.py runserver</code></pre>
+    <p>Open your browser and navigate to <code>http://localhost:8000</code>. You should see the websocket connection in action, with numbers being displayed and logged to the console.</p>
+</div>
+
+
+<script src="./assets/jquery-3.6.0.min.js"></script>
+<script src="./assets/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
