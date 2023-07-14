@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Django Custom User Model: Login Using Email</title>
+</head>
+
+<body>
+  <div class="container py-5">
+    <h1 class="mb-4">Django Custom User Model: Login Using Email</h1>
+
+    <li class="list-group-item">
+      <h4>Installing Django</h4>
+      <p>Inside the activated virtual environment, install Django using the following command:</p>
+      <pre><code>pip install django</code></pre>
+    </li>
+    <li class="list-group-item">
+      <h4>Starting a Django Project</h4>
+      <p>To start a Django project, use the following command:</p>
+      <pre><code>django-admin startproject FirstDjangoApp .</code></pre>
+    </li>
+    <!-- Starting a Django app -->
+    <li class="list-group-item">
+      <h4>Starting a Django App</h4>
+      <p>To start a Django app, use the following command:</p>
+      <pre><code>python manage.py startapp mainApp</code></pre>
+    </li>
+    <h2 class="mb-3">Step 1: Create a Custom User Manager</h2>
+    <p>
+      The following Python code defines a custom user manager called <code>UserManager</code>.
+      It provides methods for creating a regular user (<code>create_user</code>) and a superuser (<code>create_superuser</code>).
+      These methods create and save a user with the provided email, name, tc (term and condition), and password.
+      The <code>create_superuser</code> method also sets the <code>is_admin</code> flag to <code>True</code>.
+    </p>
+   
+
+    <h2 class="mb-3">Step 2: Create a Custom User Model</h2>
+    <p>
+      The following Python code defines a custom user model called <code>User</code>.
+      It subclasses <code>AbstractBaseUser</code> and includes fields such as email, name, tc, is_active, is_admin, created_at, and updated_at.
+      The model specifies the custom user manager (<code>UserManager</code>) and sets the <code>USERNAME_FIELD</code> to <code>"email"</code>.
+      Additionally, it lists the required fields (<code>REQUIRED_FIELDS</code>) when creating a user.
+    </p>
+    <h4>app/model.py</h4>
+    <pre><code class="language-python">
+      
+      from django.db import models
+      from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+      
+      # Custom user Manager
+      class UserManager(BaseUserManager):
+          def create_user(self, email, name,tc, password=None,password2=None):
+              """
+              Creates and saves a User with the given email, name, tc  and password.
+              """
+              # print("hhh")
+              if not email:
+                  raise ValueError("Users must have an email address")
+      
+              user = self.model(
+                  email=self.normalize_email(email),         
+                  name=name,
+                  tc=tc,            
+              )
+      
+              user.set_password(password)
+              user.save(using=self._db)
+              return user
+      
+          def create_superuser(self, email, name, tc, password=None):
+              """
+              Creates and saves a superuser with the given email, name,tc and password.
+              """
+              user = self.create_user(
+                  email,
+                  password=password,
+                  name=name,
+                  tc=tc
+              )
+              user.is_admin = True
+              user.save(using=self._db)
+              return user
+      
+      # Custom user Model
+      class User(AbstractBaseUser):
+          email = models.EmailField(
+              verbose_name="email address",
+              max_length=255,
+              unique=True,
+          )
+          name = models.CharField(max_length=200)
+          tc = models.BooleanField()
+          is_active = models.BooleanField(default=True)
+          is_admin = models.BooleanField(default=False)
+          created_at = models.DateTimeField(auto_now_add=True)
+          updated_at = models.DateTimeField(auto_now=True)
+      
+          objects = UserManager()
+      
+          USERNAME_FIELD = "email"
+          REQUIRED_FIELDS = ["name","tc"]
+      
+          def __str__(self):
+              return self.email
+      
+          def has_perm(self, perm, obj=None):
+              "Does the user have a specific permission?"
+              # Simplest possible answer: Yes, always
+              return self.is_admin
+      
+          def has_module_perms(self, app_label):
+              "Does the user have permissions to view the app `app_label`?"
+              # Simplest possible answer: Yes, always
+              return True
+      
+          @property
+          def is_staff(self):
+              "Is the user a member of staff?"
+              # Simplest possible answer: All admins are staff
+              return self.is_admin
+      
+
+
+
+
+
+
+
+    </code></pre>
+
+    <ul>
+      <li>
+        <strong>Import:</strong>
+        <ul>
+          <li><code>from django.db import models</code> - This imports the necessary module for defining Django models.</li>
+          <li><code>from django.contrib.auth.models import BaseUserManager, AbstractBaseUser</code> - This imports the base user manager and abstract base user classes provided by Django.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Custom User Manager:</strong>
+        <ul>
+          <li><code>class UserManager(BaseUserManager)</code> - This class extends the BaseUserManager provided by Django and overrides its methods to handle user creation and authentication.</li>
+          <li>
+            <code>create_user(self, email, name, tc, password=None, password2=None)</code> - This method creates and saves a user with the given email, name, tc (boolean), and password. It first checks if the email is provided; otherwise, it raises a <code>ValueError</code>. Then it creates a new user instance, sets the email, name, and tc values, and sets the password using <code>set_password()</code>. Finally, it saves the user using <code>user.save()</code> and returns the created user.
+          </li>
+          <li>
+            <code>create_superuser(self, email, name, tc, password=None)</code> - This method creates and saves a superuser with the given email, name, tc, and password. It utilizes the <code>create_user()</code> method to create the user, sets the <code>is_admin</code> attribute to True, and saves the user.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Custom User Model:</strong>
+        <ul>
+          <li><code>class User(AbstractBaseUser)</code> - This class extends the AbstractBaseUser provided by Django and represents the custom user model.</li>
+          <li>
+            It defines several fields for the user, such as email, name, tc, is_active, is_admin, created_at, and updated_at.
+          </li>
+          <li>
+            The <code>objects</code> attribute is set to an instance of the <code>UserManager</code> class, providing the custom user manager for this model.
+          </li>
+          <li>
+            <code>USERNAME_FIELD</code> specifies the field to use for authentication (in this case, email), and <code>REQUIRED_FIELDS</code> lists the additional fields required during user creation (in this case, name and tc).
+          </li>
+          <li>
+            Several methods are overridden, such as <code>__str__()</code> for representing the user as a string, <code>has_perm()</code> to determine if the user has a specific permission (always True for an admin user), <code>has_module_perms()</code> to determine if the user has permissions to view a specific app (always True), and <code>is_staff</code> to determine if the user is a staff member (always True for an admin user).
+          </li>
+        </ul>
+      </li>
+    </ul>
+    
+
+
+
+
+
+
+
+
+    <h2 class="mb-3">Step 3: Update settings.py</h2>
+    <p>
+      In your <code>settings.py</code> file, add the following line to specify the custom user model:
+    </p>
+    <pre><code class="language-python">AUTH_USER_MODEL = "account.User"</code></pre>
+
+    <h2 class="mb-3">Step 4: Make Migrations and Migrate</h2>
+    <p>
+      Run the following commands in your terminal to create and apply the necessary database migrations for the custom user model:
+    </p>
+    <pre><code>python manage.py makemigrations
+python manage.py migrate</code></pre>
+
+    <h2 class="mb-3">Step 5: Create a Superuser</h2>
+    <p>
+      Run the following command in your terminal to create a superuser using the custom user model:
+    </p>
+    <pre><code>python manage.py createsuperuser</code></pre>
+
+    <h2 class="mb-3">Step 6: Update admin.py</h2>
+    <p>
+      The following Python code registers the custom user model (<code>User</code>) in the Django admin interface.
+      It extends <code>UserAdmin</code> from <code>django.contrib.auth.admin</code> to customize the admin interface for the <code>User</code> model.
+      The code specifies the list of fields to be displayed in the list view (<code>list_display</code>), allows filtering based on <code>is_admin</code> (<code>list_filter</code>),
+      and defines the sections and fields displayed in the detail view (<code>fieldsets</code>).
+      It also specifies the fields displayed when creating a user in the admin interface (<code>add_fieldsets</code>),
+      enables searching users based on their email (<code>search_fields</code>), and determines the default ordering of users (<code>ordering</code>).
+    </p>
+    <h4>app/admin.py</h4>
+    <pre><code class="language-python">
+
+      from django.contrib import admin
+      from .models import User
+      from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+      
+      # Register your models here.
+      
+      class UserModelAdmin(BaseUserAdmin):
+      
+          # The fields to be used in displaying the User model.
+          # These override the definitions on the base UserModelAdmin
+          # that reference specific fields on auth.User.
+          list_display = ["id","email", "name","tc","is_admin"]
+          list_filter = ["is_admin"]
+          fieldsets = [
+              ('User Credentials', {"fields": ["email", "password"]}),
+              ("Personal info", {"fields": ["name","tc"]}),
+              ("Permissions", {"fields": ["is_admin"]}),
+          ]
+          # add_fieldsets is not a standard ModelAdmin attribute. UserModelAdmin
+          # overrides get_fieldsets to use this attribute when creating a user.
+          add_fieldsets = [
+              (
+                  None,
+                  {
+                      "classes": ["wide"],
+                      "fields": ["email", "name", "tc", "password1","password2"],
+                  },
+              ),
+          ]
+          search_fields = ["email"]
+          ordering = ["email","id"]
+          filter_horizontal = []
+      
+      
+      # Now register the new UserAdmin...
+      admin.site.register(User, UserModelAdmin)
+
+
+
+    </code></pre>
+    <h2 class="mt-4">Testing</h2>
+    <p>Now you can run the Django development server and test the admin login in your browser.</p>
+    <pre><code>(venv) $ python manage.py runserver</code></pre>
+    <p>Open your browser and navigate to <code>http://localhost:8000/admin/</code>
+      <a href="./assets/Django_customUser.rar" class="btn btn-primary">Download Project Sample</a>
+      <li>For more visit : <a href="https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#a-full-example">https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#a-full-example</a></a></li>
+  </div>
+
+
+
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
